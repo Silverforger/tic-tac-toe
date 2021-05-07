@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+}
+
+body {
+    background-color: rgb(88, 0, 0);
+}
+
+.container {
+    position: absolute;
+    height: 70%;
+    width: 100%;
+    top: 15%;
+    background-color: #fff;
+}
+
+.selection {
+    display: none;
+    position: relative;
+    align-items: center;
+    text-align: center;
+    top: 50%;
+    margin-top: -60px;
+}
+
+.selection h3 {
+    font-size: 3em;
+}
+
+.btn {
+    width: 150px;
+    height: 50px;
+    margin: 10px 10px;
+    font-size: 1.2em;
+    background-color: #ccc;
+    outline: none;
+}
+
+.btn:hover {
+    background-color: #fff;
+}
+
+.game h2 {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    width: 300px;
+    grid-gap: 1px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin:  20px auto;
+}
+
+.grid-container div {
+    height: 100px;
+    width: 100px; 
+    border: 2px solid rgb(88, 0, 0);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Helvetica';
+    font-size: 3em;
+    font-weight: 200;
+}
+
+.grid-container div:hover {
+    background-color: rgb(245, 215, 150);
+}
+
