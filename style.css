@@ -4,13 +4,14 @@
 
 body {
     background-color: rgb(88, 0, 0);
+    font-family: 'Helvetica'
 }
 
 .container {
     position: absolute;
-    height: 70%;
+    height: 80%;
     width: 100%;
-    top: 15%;
+    top: 10%;
     background-color: #fff;
 }
 
@@ -20,7 +21,7 @@ body {
     align-items: center;
     text-align: center;
     top: 50%;
-    margin-top: -60px;
+    margin-top: -70px;
 }
 
 .selection h3 {
@@ -42,21 +43,22 @@ body {
 
 .game h2 {
     margin-top: 30px;
+    font-size: 2.5em;
     text-align: center;
 }
 
 .grid-container {
     display: grid;
-    width: 300px;
+    width: 360px;
     grid-gap: 1px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    margin:  20px auto;
+    margin:  40px auto;
 }
 
 .grid-container div {
-    height: 100px;
-    width: 100px; 
+    height: 120px;
+    width: 120px; 
     border: 2px solid rgb(88, 0, 0);
     margin: 0;
     display: flex;
