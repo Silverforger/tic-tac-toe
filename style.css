@@ -62,7 +62,7 @@ body {
 }
 
 .game .whoseturn {
-    margin-top: -15px;
+    margin-top: -10px;
     font-size: 2.5em;
     text-align: center;
     transform: scale(0);
@@ -76,7 +76,7 @@ body {
     grid-gap: 1px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    margin:  40px auto;
+    margin: 20px auto;
 }
 
 .grid-container div {
