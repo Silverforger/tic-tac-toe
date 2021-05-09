@@ -1,17 +1,41 @@
 const divfields = document.querySelectorAll('.field')
 const datafield = document.querySelectorAll('[data-field]')
 const turntext = document.querySelector('.whoseturn')
+const endgame = document.querySelector('.endgame')
+const playagain = document.querySelector('.play-again')
+const endtext = document.querySelector('.end-text')
+const vsPlayer2 = document.querySelector('#vsPlayer2')
+const selection = document.querySelector('.selection')
 
 divfields.forEach(field => {
     field.addEventListener('click', clickHandler, { once: true })
 })
 
+playagain.addEventListener('click', startGame);
+vsPlayer2.addEventListener('click', () => {
+    selection.style.transitionDuration = "0.5s";
+    selection.style.transform = "scale(0)";
+    turntext.style.transform = "scale(1)";
+    let fieldanimationdelay = 1;
+    for (let i=0; i<datafield.length; i++) {
+        datafield[i].style.transitionDelay = `${fieldanimationdelay}s`;
+        datafield[i].style.transform = "scale(1)";
+        fieldanimationdelay += 0.15;
+    }
+    startGame();
+})
+
 let player2Turn;
+let winner;
 
 function startGame() {
+    endgame.style.display = "none";
     player2Turn = false;
     divfields.forEach(field => {
-        field.textContent = null;
+        field.textContent = null
+        field.style.pointerEvents = "all";
+        field.removeEventListener('click', clickHandler)
+        field.addEventListener('click', clickHandler, { once: true })
     })
     turntext.textContent = "P1's Turn"
 }
@@ -26,29 +50,34 @@ function clickHandler(e) {
     }
     e.target.textContent = `${currentmark}`
 
-    //switch marks
-    switchplayers();
-
     //win condition checker
     if (win(currentmark)) {
         divfields.forEach(field => {
             field.style.pointerEvents = "none";
         })
-        
+        endgame.style.display = "flex";
+        endtext.textContent = `${winner} wins!`
     }
     //draw condition checker
     else if (draw()) {
-        
+        divfields.forEach(field => {
+            field.style.pointerEvents = "none";
+        })
+        endgame.style.display = "flex"; 
+        endtext.textContent = "It's a draw!"
     }
-    //restart
+    //switch marks
+    switchplayers();
 }
 
 function switchplayers() {
     player2Turn = !player2Turn;
     if (player2Turn) { 
         turntext.textContent = "P2's Turn"
+        winner = "Player 2"
     } else if (!player2Turn) {
         turntext.textContent = "P1's Turn"
+        winner = "Player 1"
     }
 }
 
