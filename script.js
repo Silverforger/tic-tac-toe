@@ -1,11 +1,20 @@
 const divfields = document.querySelectorAll('.field')
 const datafield = document.querySelectorAll('[data-field]')
+const turntext = document.querySelector('.whoseturn')
 
 divfields.forEach(field => {
     field.addEventListener('click', clickHandler, { once: true })
 })
 
 let player2Turn;
+
+function startGame() {
+    player2Turn = false;
+    divfields.forEach(field => {
+        field.textContent = null;
+    })
+    turntext.textContent = "P1's Turn"
+}
 
 function clickHandler(e) {
     //for mark
@@ -22,18 +31,25 @@ function clickHandler(e) {
 
     //win condition checker
     if (win(currentmark)) {
+        divfields.forEach(field => {
+            field.style.pointerEvents = "none";
+        })
         
     }
-
     //draw condition checker
-    if (draw()) {
-        console.log("Ey yo its a draw!")
+    else if (draw()) {
+        
     }
     //restart
 }
 
 function switchplayers() {
     player2Turn = !player2Turn;
+    if (player2Turn) { 
+        turntext.textContent = "P2's Turn"
+    } else if (!player2Turn) {
+        turntext.textContent = "P1's Turn"
+    }
 }
 
 const winCombinations = [
@@ -56,14 +72,8 @@ function win(currentmark) {
 }
 
 function draw() {
-    for (let i=0; i<datafield.length; i++) {
-        if (datafield[i].textContent != "") {
-            if (i = 8) {
-                return true;
-            } else { continue }
-        } else {
-            continue;
-        }
-    }
+    return [...datafield].every(field => {
+        return field.textContent.includes("X") || field.textContent.includes("O");
+    })
 }
 
