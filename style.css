@@ -76,7 +76,7 @@ body {
     grid-gap: 1px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    margin: 20px auto;
+    margin: 25px auto;
 }
 
 .grid-container div {
