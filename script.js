@@ -6,6 +6,7 @@ const playagain = document.querySelector('.play-again')
 const endtext = document.querySelector('.end-text')
 const vsPlayer2 = document.querySelector('#vsPlayer2')
 const selection = document.querySelector('.selection')
+const lastfield = document.querySelector('#last-field')
 
 divfields.forEach(field => {
     field.addEventListener('click', clickHandler, { once: true })
@@ -21,7 +22,13 @@ vsPlayer2.addEventListener('click', () => {
         datafield[i].style.transitionDelay = `${fieldanimationdelay}s`;
         datafield[i].style.transform = "scale(1)";
         fieldanimationdelay += 0.15;
-    }
+        }
+    //reset animation delay using transitionend event
+    lastfield.ontransitionend = () => {
+        for (let i=0; i<datafield.length; i++) {
+            datafield[i].style.transitionDelay = `0s`
+        }
+    };
     startGame();
 })
 
